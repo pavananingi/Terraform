@@ -1,0 +1,19 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+client_id       = "7e62719f-4c52-4a55-9402-3b0ad1681a60"
+client_secret   = "33X8Q~h-MNl2fM2GEp_aWmGhbzihsgEcPNRPYafY"
+tenant_id       = "b0bd64ab-de0c-4777-b4d8-3007adf2d037"
+subscription_id = "cc44cdd4-32db-4fd7-9139-9804fd5681c1"
+}
+
+

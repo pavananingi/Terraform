@@ -1,0 +1,45 @@
+az group create --name PavanRg01 --location eastus
+
+az network vnet create -g PavanRg01 -n PavanVnet01 --address-prefix 10.1.0.0/16 \
+--subnet-name Snet01 --subnet-prefixes 10.1.1.0/24
+
+az vm create --resource-group "PavanRg01" --name "Pavanvm01" --image "UbuntuLTS" \
+  --vnet-name PavanVnet01 --subnet Snet01 \
+  --admin-username "pavananingi" \
+  --admin-password "Pavan@95059505"  --size standard_B1ls 
+
+az vm create --resource-group "PavanRg01" --name "Pavanvm02" --image "UbuntuLTS" \
+  --vnet-name PavanVnet01 --subnet Snet01 \
+  --admin-username "pavananingi" \
+  --admin-password "Pavan@95059505"  --size standard_B1ls 
+  
+  
+  
+  az network lb create \
+    --resource-group PavanRg01 \
+    --name myLoadBalancer \
+    --sku Standard \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool
+az network lb probe create \
+    --resource-group PavanRg01 \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80
+az network lb rule create \
+    --resource-group PavanRg01 \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe \
+    --disable-outbound-snat true \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
+  
+  

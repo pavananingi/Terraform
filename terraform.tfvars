@@ -1,0 +1,11 @@
+rg_name      = "PavanRG02"
+rg_location  = "East us"
+vnet1_name   = "PavanVnet01"
+cider1_vnet  = ["198.165.0.0/16"]
+subnet1_name = "PavanSnet1"
+cider3_subnet= ["198.165.10.0/24"]
+vnet2_name   = "PavanVnet02"
+cider2_vnet  = ["198.166.0.0/16"]
+subnet2_name = "PavanSnet2"
+cider4_subnet= ["198.166.10.0/24"]
+vm_name      = "PavanVM01"
